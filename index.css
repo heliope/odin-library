@@ -17,6 +17,12 @@ body {
     background-color: #f2f2f2;
 }
 
+body div#books table {
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
 body div.blur > :not(#form-welcome) {
     filter: blur(5px);
 }
