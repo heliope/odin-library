@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title"></title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <div class="content blur">
+        
+        <div id="form-welcome" class="grid">
+            <form method="dialog" action="#">
+                <fieldset>
+                    <div id="form-title">
+                        <legend>Please insert your name below!</legend>
+                    </div>
+                    <div id="user-details">
+                        <label for="name" id="name-label">Name</label>
+                        <input type="text" id="name" minlength="3"  maxlength="10" required>
+                    </div>
+                    <div id="user-details-submit">
+                        <button type="submit" id="register" disabled="true">Register</button>
+                        <button type="reset" id="cancel" value="cancel">Cancel</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div id="add-book" class="hidden">
+            <form method="dialog" action="#">
+                <fieldset>
+                    <div id="book-title">
+                        <legend>Please regist your book here!</legend>
+                    </div>
+                    <div id="survey-book">
+                        <div id="book-details-title">
+                            <label for="book" id="book-label">Title</label>
+                            <input type="text" id="book-name" minlength="2"  maxlength="30" required>
+                        </div>
+                        <div id="book-details-pages">
+                            <label for="book" id="pages-label">Pages</label>
+                            <input type="number" id="book-pages" required>
+                        </div>
+                        <div id="book-details-author">
+                            <label for="book" id="author-label">Author</label>
+                            <input type="text" id="book-author" minlength="2"  maxlength="30" required>
+                        </div>
+                        <div id="book-details-isread">
+                            <label for="book" id="isread-label">Already read?</label>
+                            <input type="checkbox" id="book-isread" value="isread" required>
+                        </div>
+                    </div>
+                    <div id="user-details-submit">
+                        <button type="submit" id="book-add" disabled="true">Add</button>
+                        <button type="reset" id="book-cancel" value="cancel">Cancel</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

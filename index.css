@@ -1,0 +1,197 @@
+* {
+    margin:0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #f2f2f2;
+}
+
+body div.blur > :not(#form-welcome) {
+    filter: blur(5px);
+}
+
+body div.grid {
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body div.hidden {
+    display: none;
+}
+
+body div#form-welcome form {
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    width: min(70vw, 290px);
+    height: min(70vh, 300px);
+}
+
+body div#form-welcome form fieldset {
+    height: 100%;
+    border: none;
+    font-size: 18px;
+    display: grid;
+    grid-template-rows: 1fr 0.5fr 1fr;
+}
+
+body div#form-welcome form fieldset div#form-title {
+    color: #0f3554;
+    text-align: center;
+    align-self: center;
+}
+
+body div#form-welcome form fieldset div#user-details {
+    color: #0f3554;
+    text-align: center;
+    align-self: top;
+}
+
+body div#form-welcome form fieldset div#user-details input {
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+body div#form-welcome form fieldset div#user-details input:focus {
+    outline: none;
+}
+
+body div#form-welcome form fieldset div#user-details-submit{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+body div#form-welcome form fieldset div#user-details-submit button {
+
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+    color: #000;
+    font-weight: bolder;
+    height: min(15vh, 60px);
+    width: min(25vw, 100px);
+}
+
+body div#form-welcome form fieldset div#user-details-submit button:hover {
+    background-color: #ff7f04;
+}
+
+body div#form-welcome form fieldset div#user-details-submit button:disabled {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Formulario Adicionar Livros */
+
+body div#add-book form {
+    border: solid 1px rgba(0, 255, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0px rgba(0, 255, 0, 0.1);
+    background-color: #032202;
+    width: min(70vw, 290px);
+    height: min(70vh, 300px);
+}
+
+body div#add-book form fieldset {
+    height: 100%;
+    border: none;
+    font-size: 18px;
+    display: grid;
+    grid-template-rows: 0.25fr 1fr;
+}
+
+body div#add-book form fieldset div#book-title {
+    color: #fff;
+    text-align: center;
+    align-self: center;
+}
+
+body div#add-book form fieldset div#survey-book {
+    color: #fff;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    padding-left: 20px;
+
+}
+
+body div#add-book form fieldset div#survey-book div#book-details-title{
+    display: grid;
+    grid-template-columns: 0.6fr 0.1fr;
+    align-content: center;
+}
+
+body div#add-book form fieldset div#survey-book div#book-details-title label {
+    text-align: left;
+}
+
+body div#add-book form fieldset div#survey-book div#book-details-pages{
+    display: grid;
+    grid-template-columns: 0.6fr 0.1fr;
+    align-content: center;
+}
+
+body div#add-book form fieldset div#survey-book div#book-details-pages label {
+    text-align: left;
+}
+
+body div#add-book form fieldset div#survey-book div#book-details-author{
+    display: grid;
+    grid-template-columns: 0.6fr 0.1fr;
+    align-content: center;
+}
+
+body div#add-book form fieldset div#survey-book div#book-details-author label {
+    text-align: left;
+}
+
+body div#add-book form fieldset div#survey-book div#book-details-isread{
+    display: grid;
+    grid-template-columns: 0.4fr 0.1fr;
+    align-content: center;
+}
+
+body div#add-book form fieldset div#survey-book div#book-details-isread label {
+    text-align: left;
+}
+
+
+body div#add-book form fieldset div#user-details-submit{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+body div#add-book form fieldset div#user-details-submit button {
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+body div#add-book form fieldset div#user-details-submit button:hover {
+    background-color: #ff7f04;
+}
+
+body div#add-book form fieldset div#user-details-submit button:disabled {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+
+
+
+
+
+
+
+
