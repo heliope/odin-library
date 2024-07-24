@@ -1,4 +1,25 @@
 
+// Lógica da Programação
+
+const myLibrary = [];
+
+// Constructor
+function Book(title,author,pages,isread) {
+    
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isread = isread;
+}   
+
+function addBookToLibrary(title,author,pages,isread) {
+
+    const book = new Book(title,author,pages,isread);
+    
+    myLibrary.push(book)
+}
+
+
 document.addEventListener("DOMContentLoaded",() => {
     
     const inputUser = document.getElementById("name");
@@ -73,6 +94,7 @@ document.addEventListener("DOMContentLoaded",() => {
 
     // Começar o registo do Livro
     const inputUserRegisterBook = document.getElementById("book-add")
+    const inputUserIsread = document.getElementById("book-isread");
     const inputUserBookTitle = document.getElementById("book-name");
     const inputUserBookPages = document.getElementById("book-pages");
     const inputUserBookAuthor = document.getElementById("book-author");
@@ -166,7 +188,51 @@ document.addEventListener("DOMContentLoaded",() => {
             inputUserBookPages.value="";
         }
     })
+
+    // Adicionar novo Livro
+    inputUserRegisterBook.addEventListener("click", () => {
+
+        addBookToLibrary(inputUserBookTitle.value, inputUserBookAuthor.value, inputUserBookPages.value, inputUserRegisterBook.value);
+
+        // Adiciona nome do Livro
+        const tableBookTitle = document.getElementById("book-table-title");
+        const newBookTitleTr = document.createElement("tr");
+        const newBookTitleTd = document.createElement("td");
+
+        newBookTitleTd.textContent = inputUserBookTitle.value;
+        newBookTitleTr.appendChild(newBookTitleTd);
+        tableBookTitle.appendChild(newBookTitleTr);
+
+        // Adiciona nome do Livro
+        const tableBookAuthor = document.getElementById("book-table-author");
+        const newBookAuthorTr = document.createElement("tr");
+        const newBookAuthorTd = document.createElement("td");
+
+        newBookAuthorTd.textContent = inputUserBookAuthor.value;
+        newBookAuthorTr.appendChild(newBookAuthorTd);
+        tableBookAuthor.appendChild(newBookAuthorTr);
+
+        // Adiciona Páginas do Livro
+        const tableBookPages = document.getElementById("book-table-pages");
+        const newBookPagesTr = document.createElement("tr");
+        const newBookPagesTd = document.createElement("td");
+       
+        newBookPagesTd.textContent = inputUserBookPages.value;
+        newBookPagesTr.appendChild(newBookPagesTd);
+        tableBookPages.appendChild(newBookPagesTr);
+
+        // Aciciona se o Livro foi lido ou não
+        const tableBookIsread = document.getElementById("book-table-isread");
+        const newBookIsreadTr = document.createElement("tr");
+        const newBookIsreadTd = document.createElement("td");
+        
+        newBookIsreadTd.textContent = inputUserIsread.value;
+        newBookIsreadTr.appendChild(newBookIsreadTd);
+        tableBookIsread.appendChild(newBookIsreadTr);
+    })
 })
+
+
 
 
 
