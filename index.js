@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded",() => {
 
         addBookToLibrary(inputUserBookTitle.value, inputUserBookAuthor.value, inputUserBookPages.value, inputUserRegisterBook.value);
 
-        const divBook = document.getElementById("books");
+        const divBook = document.getElementById("books-auxiliar");
         const tableBookTr= document.getElementById("book-table-body");
         const newBookTr = document.createElement("tr");
         tableBookTr.appendChild(newBookTr);
@@ -247,6 +247,7 @@ document.addEventListener("DOMContentLoaded",() => {
         
         // Oculta formulário
          addBookForm.classList.add("hidden");
+         addBookForm.classList.remove("grid");
     })
 })
 

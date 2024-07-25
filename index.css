@@ -6,6 +6,10 @@
     --hoverColor:#ff7f04;
 }
 
+.hidden {
+    display: none;
+}
+
 * {
     margin:0;
     box-sizing: border-box;
@@ -17,9 +21,18 @@ body {
     background-color: #f2f2f2;
 }
 
+body div#books-auxiliar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}   
+
 body div#books {
-    position: relative;
-    top: 100px;
+
+}
+
+div#add-book-img img{
+    width:50px
 }
 
 body div#books table {
@@ -75,10 +88,6 @@ body div.grid {
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
-
-body div.hidden {
-    display: none;
 }
 
 body div#form-welcome form {
