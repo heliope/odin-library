@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded",() => {
     const inputUser = document.getElementById("name");
     const regexInput = /^[\p{L}\p{N}]+$/u // \p{L} qualquer letra incluíndo as acentuadas, \p{N}, qualquer numero, /u flag para unicode
     const registerButton = document.getElementById("register");
+    const addBookForm = document.getElementById("add-book")
 
     // Valida os caracteres introduzidos no input de entrada
     inputUser.addEventListener("keyup",(e) => {
@@ -76,7 +77,6 @@ document.addEventListener("DOMContentLoaded",() => {
 
         const container = document.querySelector(".blur");
         const formLogin = document.getElementById("form-welcome");
-        const addBookForm = document.getElementById("add-book")
 
         // Retira o Desfocado
         document.getElementById("title").textContent = `${inputUser.value} - Library`
@@ -194,41 +194,59 @@ document.addEventListener("DOMContentLoaded",() => {
 
         addBookToLibrary(inputUserBookTitle.value, inputUserBookAuthor.value, inputUserBookPages.value, inputUserRegisterBook.value);
 
-        // Adiciona nome do Livro
-        const tableBookTitle = document.getElementById("book-table-title");
-        const newBookTitleTr = document.createElement("tr");
+        const divBook = document.getElementById("books");
+        const tableBookTr= document.getElementById("book-table-body");
+        const newBookTr = document.createElement("tr");
+        tableBookTr.appendChild(newBookTr);
+
+        // Adiciona nome do Livro      
         const newBookTitleTd = document.createElement("td");
-
         newBookTitleTd.textContent = inputUserBookTitle.value;
-        newBookTitleTr.appendChild(newBookTitleTd);
-        tableBookTitle.appendChild(newBookTitleTr);
+        newBookTr.appendChild(newBookTitleTd);
 
         // Adiciona nome do Livro
-        const tableBookAuthor = document.getElementById("book-table-author");
-        const newBookAuthorTr = document.createElement("tr");
         const newBookAuthorTd = document.createElement("td");
-
         newBookAuthorTd.textContent = inputUserBookAuthor.value;
-        newBookAuthorTr.appendChild(newBookAuthorTd);
-        tableBookAuthor.appendChild(newBookAuthorTr);
+        newBookTr.appendChild(newBookAuthorTd);
 
         // Adiciona Páginas do Livro
-        const tableBookPages = document.getElementById("book-table-pages");
-        const newBookPagesTr = document.createElement("tr");
-        const newBookPagesTd = document.createElement("td");
-       
+        const newBookPagesTd = document.createElement("td");      
         newBookPagesTd.textContent = inputUserBookPages.value;
-        newBookPagesTr.appendChild(newBookPagesTd);
-        tableBookPages.appendChild(newBookPagesTr);
+        newBookTr.appendChild(newBookPagesTd);
 
         // Aciciona se o Livro foi lido ou não
-        const tableBookIsread = document.getElementById("book-table-isread");
-        const newBookIsreadTr = document.createElement("tr");
         const newBookIsreadTd = document.createElement("td");
+        newBookTr.appendChild(newBookIsreadTd);
+        if ( inputUserIsread) {
+            
+            const sgvIsread = document.createElement("button");
+            sgvIsread.classList.add("button-isRead")
+            newBookIsreadTd.appendChild(sgvIsread);
+        }
+
+        // Adiciona o botão Edit
+        const newBookEdit = document.createElement("td");
+        const svgEdit = document.createElement("button");
+
+        newBookTr.appendChild(newBookEdit);
+        newBookEdit.appendChild(svgEdit);
+
+        svgEdit.classList.add("button-edit")
         
-        newBookIsreadTd.textContent = inputUserIsread.value;
-        newBookIsreadTr.appendChild(newBookIsreadTd);
-        tableBookIsread.appendChild(newBookIsreadTr);
+        // Adiciona o botão Delete
+        const newBookDelete = document.createElement("td");
+        const svgDelete = document.createElement("button");
+
+        newBookTr.appendChild(newBookDelete);
+        newBookDelete.appendChild(svgDelete);
+
+        svgDelete.classList.add("button-delete");
+        
+        // Mostra Tabela
+        divBook.classList.remove("hidden");
+        
+        // Oculta formulário
+         addBookForm.classList.add("hidden");
     })
 })
 

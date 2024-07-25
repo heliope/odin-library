@@ -9,17 +9,27 @@
 </head>
 <body>
     <div class="content blur">
-        <div id="books">
-            <table>
-                <tr id="book-table-header">
-                    <th id="book-table-title">Book</th>
-                    <th id="book-table-author">Author</th>
-                    <th id="book-table-pages">Pages</th>
-                    <th id="book-table-isread">IsRead</th>
-                    <th id="book-table-change">Change</th>
-                    <th id="book-table-delete">Delete</th>
-                </tr>
-            </table>
+        <div id="books-auxiliar">
+            <div id="books" class="hidden">
+                <table>
+                    <caption></caption>
+                    <thead>
+                        <tr id="book-table-header">
+                            <th id="book-table-title">Book</th>
+                            <th id="book-table-author">Author</th>
+                            <th id="book-table-pages">Pages</th>
+                            <th id="book-table-isread">IsRead</th>
+                            <th id="book-table-change">Edit</th>
+                            <th id="book-table-delete">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="book-table-body">
+                    </tbody>
+                </table>
+            </div>
+            <div class="hidden">
+                <img src="ooui--add.svg" alt="button-add">
+            </div>
         </div>
         <div id="form-welcome" class="grid">
             <form method="dialog" action="#">

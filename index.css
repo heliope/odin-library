@@ -17,10 +17,52 @@ body {
     background-color: #f2f2f2;
 }
 
+body div#books {
+    position: relative;
+    top: 100px;
+}
+
 body div#books table {
     margin-right: auto;
     margin-left: auto;
+    border-collapse: collapse;
+}
 
+body div#books table thead tr th {
+    padding: 10px 25px;
+    text-align: center;
+    border-bottom: 4px solid var(--hoverColor);
+}
+
+body div#books table tbody tr {
+    text-align: center;
+    padding: 15px;
+}
+
+body div#books table tbody tr td{
+    padding: 15px;
+}
+
+
+body div#books table tbody tr td button.button-isRead {
+    background-image: url(icon-park--correct.svg);
+    background-size: contain;
+    width: 32px;
+    height: 32px;
+}
+
+body div#books table tbody tr td button.button-edit {
+    background-image: url(icon-park--edit-two.svg);
+    background-size: contain;
+    width: 32px;
+    height: 32px;
+}
+
+body div#books table tbody tr td button.button-delete {
+    background-image: url(tdesign--delete-time.svg);
+    background-size: contain;
+    width: 32px;
+    height: 32px;
 }
 
 body div.blur > :not(#form-welcome) {
