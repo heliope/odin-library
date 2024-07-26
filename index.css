@@ -23,16 +23,29 @@ body {
 
 body header {
     text-align: center;
-    margin: 2em auto;
+    margin-left: auto;
+    margin-right: auto;
     color: var(--principalColor);
+    position: relative;
+    top: 50px;
+}
+
+body#books-auxiliar {
+    position: absolute;
+    top: 250px
+
 }
  
 div#add-book-img {
     margin-left: 2em;
+    position: relative;
+    top: 50px;
 }
 
 div#delete-book-img {
     margin-left: 1em;
+    position: relative;
+    top: 50px;
 }
 
 div#add-book-img button {
@@ -55,7 +68,8 @@ body div#books table {
     margin-right: auto;
     margin-left: auto;
     border-collapse: collapse;
-
+    position: relative;
+    top: 50px;
 } 
 
 body div#books table tr.even-row {

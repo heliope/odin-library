@@ -325,10 +325,12 @@ document.addEventListener("DOMContentLoaded",() => {
     tableBookTr.addEventListener("click", (e) => {
 
         const targerRow = e.target
+      
+        //MostraFormulário do adicionar Livro
+        addBookForm.classList.add("grid");
+        addBookForm.classList.remove("remove");
 
-        targerRow.parentNode.parentNode.addEventListener("click", () => {
-            console.log("teste");
-        });
+
 
     })
 
