@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded",() => {
     const bookAuxiliar = document.getElementById("books-auxiliar");
     const container = document.querySelector(".blur");
     const formLogin = document.getElementById("form-welcome");
+    const headerBook = document.getElementById("headerBook");
+    const tableBookTr= document.getElementById("book-table-body");
 
     // Valida os caracteres introduzidos no input de entrada
     inputUser.addEventListener("keyup",(e) => {
@@ -196,7 +198,6 @@ document.addEventListener("DOMContentLoaded",() => {
         addBookToLibrary(inputUserBookTitle.value, inputUserBookAuthor.value, inputUserBookPages.value, inputUserRegisterBook.value);
 
         const divBook = document.getElementById("books-auxiliar");
-        const tableBookTr= document.getElementById("book-table-body");
         const newBookTr = document.createElement("tr");
         tableBookTr.appendChild(newBookTr);
 
@@ -277,8 +278,13 @@ document.addEventListener("DOMContentLoaded",() => {
         })
 
         //Configura Titulo da tabela
-        const headerBook = document.getElementById("headerBook");
         headerBook.textContent = `${inputUser.value} - Library`
+        inputUserRegisterBook.setAttribute("disabled", true);
+
+        const rowNumber =  tableBookTr.rows.length +1;
+        newBookTr.id= rowNumber;
+
+        console.log(newBookTr)
     })
 
     // Criar novo Livro
@@ -287,17 +293,45 @@ document.addEventListener("DOMContentLoaded",() => {
     addNewBook.addEventListener("click", () => {
         
         // Retira o Desfocado
-        //document.getElementById("title").textContent = `${inputUser.value} - Library`
-        container.classList.add("blur");
-
-        // Oculta o formulário
-        formLogin.classList.add("grid");
-        formLogin.classList.remove("hidden");
-        
+        container.classList.remove("blur");
+      
         //MostraFormulário do adicionar Livro
-        addBookForm.classList.add("hidden");
-        addBookForm.classList.remove("grid");
+        addBookForm.classList.add("grid");
+        addBookForm.classList.remove("remove");
+
+        // Oculta Titulo
+        bookAuxiliar.style.display="none";
+        headerBook.style.display="none";
+
+        // Reset Formulário
+        inputUserBookTitle.value="";
+        inputUserBookPages.value="";
+        inputUserBookAuthor.value="";
+        inputUserIsread.checked = false;
     })
+
+    // Eliminar todos os Livros
+    const deleteBookAll = document.getElementById("delete-book-all");
+
+    deleteBookAll.addEventListener("click", () => {
+        
+        while (tableBookTr.firstChild) {
+            tableBookTr.removeChild(tableBookTr.firstChild);
+        }
+    })
+
+    // Clica na edição de um livro
+
+    tableBookTr.addEventListener("click", (e) => {
+
+        const targerRow = e.target
+
+        targerRow.parentNode.parentNode.addEventListener("click", () => {
+            console.log("teste");
+        });
+
+    })
+
 })
 
 
