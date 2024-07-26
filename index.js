@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded",() => {
     const registerButton = document.getElementById("register");
     const addBookForm = document.getElementById("add-book")
     const bookAuxiliar = document.getElementById("books-auxiliar");
+    const container = document.querySelector(".blur");
+    const formLogin = document.getElementById("form-welcome");
 
     // Valida os caracteres introduzidos no input de entrada
     inputUser.addEventListener("keyup",(e) => {
@@ -76,8 +78,6 @@ document.addEventListener("DOMContentLoaded",() => {
     // Botão Registar -> ao começar Registo
     registerButton.addEventListener("click", () => {
 
-        const container = document.querySelector(".blur");
-        const formLogin = document.getElementById("form-welcome");
 
         // Retira o Desfocado
         document.getElementById("title").textContent = `${inputUser.value} - Library`
@@ -276,10 +276,27 @@ document.addEventListener("DOMContentLoaded",() => {
             }
         })
 
-
         //Configura Titulo da tabela
         const headerBook = document.getElementById("headerBook");
         headerBook.textContent = `${inputUser.value} - Library`
+    })
+
+    // Criar novo Livro
+    const addNewBook = document.getElementById("add-book-new");
+
+    addNewBook.addEventListener("click", () => {
+        
+        // Retira o Desfocado
+        //document.getElementById("title").textContent = `${inputUser.value} - Library`
+        container.classList.add("blur");
+
+        // Oculta o formulário
+        formLogin.classList.add("grid");
+        formLogin.classList.remove("hidden");
+        
+        //MostraFormulário do adicionar Livro
+        addBookForm.classList.add("hidden");
+        addBookForm.classList.remove("grid");
     })
 })
 
