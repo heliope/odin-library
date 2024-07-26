@@ -21,17 +21,33 @@ body {
     background-color: #f2f2f2;
 }
 
-body div#books-auxiliar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}   
+body header {
+    text-align: center;
+    margin: 2em auto;
+    color: var(--principalColor);
+}
+ 
+div#add-book-img {
+    margin-left: 2em;
+}
 
-body div#books {
+div#delete-book-img {
+    margin-left: 1em;
+}
 
+div#add-book-img button {
+    border: none;
 }
 
 div#add-book-img img{
+    width:50px
+}
+
+div#delete-book-img button {
+    border: none;
+}
+
+div#delete-book-img img{
     width:50px
 }
 
@@ -39,12 +55,24 @@ body div#books table {
     margin-right: auto;
     margin-left: auto;
     border-collapse: collapse;
+
+} 
+
+body div#books table tr.even-row {
+    color: var(--principalColor);
+}
+
+body div#books table tr.odd-row {
+    background-color: var(--principalColor);
+    color: var(--textColor);
 }
 
 body div#books table thead tr th {
     padding: 10px 25px;
     text-align: center;
     border-bottom: 4px solid var(--hoverColor);
+    color: #1A3246;
+
 }
 
 body div#books table tbody tr {
@@ -62,6 +90,15 @@ body div#books table tbody tr td button.button-isRead {
     background-size: contain;
     width: 32px;
     height: 32px;
+    border: none;
+}
+
+body div#books table tbody tr td button.button-notRead {
+    background-image: url(ph--empty-bold.svg);
+    background-size: contain;
+    width: 32px;
+    height: 32px;
+    border: none;   
 }
 
 body div#books table tbody tr td button.button-edit {
@@ -69,6 +106,7 @@ body div#books table tbody tr td button.button-edit {
     background-size: contain;
     width: 32px;
     height: 32px;
+    border: none;
 }
 
 body div#books table tbody tr td button.button-delete {
@@ -76,6 +114,7 @@ body div#books table tbody tr td button.button-delete {
     background-size: contain;
     width: 32px;
     height: 32px;
+    border: none;
 }
 
 body div.blur > :not(#form-welcome) {

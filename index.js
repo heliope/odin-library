@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded",() => {
     const regexInput = /^[\p{L}\p{N}]+$/u // \p{L} qualquer letra incluíndo as acentuadas, \p{N}, qualquer numero, /u flag para unicode
     const registerButton = document.getElementById("register");
     const addBookForm = document.getElementById("add-book")
+    const bookAuxiliar = document.getElementById("books-auxiliar");
 
     // Valida os caracteres introduzidos no input de entrada
     inputUser.addEventListener("keyup",(e) => {
@@ -217,11 +218,18 @@ document.addEventListener("DOMContentLoaded",() => {
         // Aciciona se o Livro foi lido ou não
         const newBookIsreadTd = document.createElement("td");
         newBookTr.appendChild(newBookIsreadTd);
-        if ( inputUserIsread) {
+        
+        if ( inputUserIsread.checked) {
             
             const sgvIsread = document.createElement("button");
             sgvIsread.classList.add("button-isRead")
             newBookIsreadTd.appendChild(sgvIsread);
+        
+        } else {
+
+            const svgNotRead = document.createElement("button");
+            svgNotRead.classList.add("button-notRead");
+            newBookIsreadTd.appendChild(svgNotRead);
         }
 
         // Adiciona o botão Edit
@@ -248,8 +256,33 @@ document.addEventListener("DOMContentLoaded",() => {
         // Oculta formulário
          addBookForm.classList.add("hidden");
          addBookForm.classList.remove("grid");
+
+        // Configura a tabela dos Livros
+        bookAuxiliar.style.display="flex";
+        bookAuxiliar.style.flexDirection="row";
+        bookAuxiliar.style.justifyContent="center";
+
+        // Formata as linhas da tabela
+        const rows = document.querySelectorAll("table tbody tr");
+        rows.forEach((row,index) => {
+            
+            if(index % 2 === 0) {
+                
+                row.classList.add("even-row");
+            
+            } else {
+
+                row.classList.add("odd-row")
+            }
+        })
+
+
+        //Configura Titulo da tabela
+        const headerBook = document.getElementById("headerBook");
+        headerBook.textContent = `${inputUser.value} - Library`
     })
 })
+
 
 
 
