@@ -31,6 +31,14 @@ document.addEventListener("DOMContentLoaded",() => {
     const formLogin = document.getElementById("form-welcome");
     const headerBook = document.getElementById("headerBook");
     const tableBookTr= document.getElementById("book-table-body");
+    const addBookFormUpdate = document.getElementById("update-book");        
+    const inputUserRegisterBookUpdate = document.getElementById("book-add-update")
+    const inputUserIsreadUpdate = document.getElementById("book-isread-update");
+    let inputUserBookTitleUpdate = document.getElementById("book-name-update");
+    const inputUserBookPagesUpdate = document.getElementById("book-pages-update");
+    const inputUserBookAuthorUpdate = document.getElementById("book-author-update");
+    let targetRow; 
+
 
     // Valida os caracteres introduzidos no input de entrada
     inputUser.addEventListener("keyup",(e) => {
@@ -80,7 +88,6 @@ document.addEventListener("DOMContentLoaded",() => {
     // Botão Registar -> ao começar Registo
     registerButton.addEventListener("click", () => {
 
-
         // Retira o Desfocado
         document.getElementById("title").textContent = `${inputUser.value} - Library`
         container.classList.remove("blur");
@@ -92,7 +99,6 @@ document.addEventListener("DOMContentLoaded",() => {
         //MostraFormulário do adicionar Livro
         addBookForm.classList.remove("hidden");
         addBookForm.classList.add("grid");
-
     })
 
     // Começar o registo do Livro
@@ -104,7 +110,7 @@ document.addEventListener("DOMContentLoaded",() => {
     const regexInputPages = /^[0-9]+$/;
 
     // Validação do Título
-    function checkUserRegisterBookInputTitle() {
+    function checkUserRegisterBookInputTitle(inputUserBookTitle,inputUserRegisterBook,inputUserBookPages,inputUserBookAuthor) {
                
         if (inputUserBookTitle.value.trim().length >2) {
                 
@@ -127,7 +133,7 @@ document.addEventListener("DOMContentLoaded",() => {
     }
 
     // Validação do número de Páginas
-    function checkUserRegisterBookInputPages() {
+    function checkUserRegisterBookInputPages(inputUserBookPages,inputUserBookTitle,inputUserBookAuthor,inputUserRegisterBook) {
                 
         if (regexInputPages.test(inputUserBookPages.value)) {
     
@@ -156,7 +162,7 @@ document.addEventListener("DOMContentLoaded",() => {
     }
 
     // Validação do nome do Autor
-    function checkUserRegisterBookInputAuthor() {
+    function checkUserRegisterBookInputAuthor(inputUserBookAuthor,inputUserBookTitle,inputUserBookPages) {
         
         if ( inputUserBookAuthor.value.length> 1 && inputUserBookAuthor.value.length <= 30 ) {
             
@@ -179,9 +185,10 @@ document.addEventListener("DOMContentLoaded",() => {
     }
 
     // Desbloquear o Botão de Registar Livro
-    inputUserBookTitle.addEventListener('input',checkUserRegisterBookInputTitle);
-    inputUserBookPages.addEventListener('input',checkUserRegisterBookInputPages);
-    inputUserBookAuthor.addEventListener('input',checkUserRegisterBookInputAuthor);
+
+    inputUserBookTitle.addEventListener('input', () => checkUserRegisterBookInputTitle(inputUserBookTitle,inputUserRegisterBook,inputUserBookPages,inputUserBookAuthor));
+    inputUserBookPages.addEventListener('input', () => checkUserRegisterBookInputPages(inputUserBookPages,inputUserBookTitle,inputUserBookAuthor,inputUserRegisterBook));
+    inputUserBookAuthor.addEventListener('input', () => checkUserRegisterBookInputAuthor(inputUserBookAuthor,inputUserBookTitle,inputUserBookPages));
 
     inputUserBookPages.addEventListener("blur", () => {
 
@@ -283,8 +290,6 @@ document.addEventListener("DOMContentLoaded",() => {
 
         const rowNumber =  tableBookTr.rows.length +1;
         newBookTr.id= rowNumber;
-
-        console.log(newBookTr)
     })
 
     // Criar novo Livro
@@ -321,17 +326,78 @@ document.addEventListener("DOMContentLoaded",() => {
     })
 
     // Clica na edição de um livro
-
     tableBookTr.addEventListener("click", (e) => {
 
-        const targerRow = e.target
+        let targetRow = e.target.parentElement.parentElement.id-2
       
         //MostraFormulário do adicionar Livro
-        addBookForm.classList.add("grid");
-        addBookForm.classList.remove("remove");
+        addBookFormUpdate.classList.add("grid");
+        addBookFormUpdate.classList.remove("remove");
 
+        inputUserBookTitleUpdate.value = myLibrary[targetRow].title
+        inputUserBookPagesUpdate.value = myLibrary[targetRow].pages
+        inputUserBookAuthorUpdate.value = myLibrary[targetRow].author
+        
+        if ( myLibrary[targetRow].isread = 1) {
+            
+            inputUserIsreadUpdate.checked = true;
+        } else {
 
+            inputUserIsreadUpdate.checked = false;
+        }
 
+        // Começar update do Livro
+
+        inputUserBookTitleUpdate.addEventListener('input', () => checkUserRegisterBookInputTitle(inputUserBookTitleUpdate,inputUserRegisterBookUpdate,inputUserBookPagesUpdate,inputUserBookAuthorUpdate));
+        inputUserBookPagesUpdate.addEventListener('input', () => checkUserRegisterBookInputPages(inputUserBookPagesUpdate,inputUserBookTitleUpdate,inputUserBookAuthorUpdate,inputUserRegisterBookUpdate));
+        inputUserBookAuthorUpdate.addEventListener('input', () =>checkUserRegisterBookInputAuthor(inputUserBookAuthorUpdate,inputUserBookTitleUpdate,inputUserBookPagesUpdate));
+    
+        inputUserBookPages.addEventListener("blur", () => {
+    
+            if (!regexInputPages.test(inputUserBookPagesUpdate.value)) {
+                
+                alert("Só é possivel inserir digitos numéricos");
+                inputUserBookPagesUpdate.value="";
+            }
+        })
+
+        // Update do Livro
+        inputUserRegisterBookUpdate.addEventListener("click", () => {
+       
+            myLibrary[targetRow].title = inputUserBookTitleUpdate.value
+            myLibrary[targetRow].pages = inputUserBookPagesUpdate.value
+            myLibrary[targetRow].author = inputUserBookAuthorUpdate.value
+
+            if ( inputUserIsreadUpdate.checked) {
+            
+                myLibrary[targetRow].isread = 1;
+            } else {
+    
+                myLibrary[targetRow].isread = 0;
+            }
+
+            e.target.parentElement.parentElement.children[0].textContent = myLibrary[targetRow].title 
+            e.target.parentElement.parentElement.children[1].textContent = myLibrary[targetRow].pages 
+            e.target.parentElement.parentElement.children[2].textContent = myLibrary[targetRow].author
+
+            
+            if (  myLibrary[targetRow].isread = 1 ) {   
+
+                e.target.parentElement.parentElement.children[3].classList.add("button-isRead");
+                e.target.parentElement.parentElement.children[3].classList.remove("button-notRead");
+                e.target.parentElement.parentElement.children[3].children[0].classList.add("button-isRead");
+                e.target.parentElement.parentElement.children[3].children[0].classList.remove("button-notRead");
+            
+            } else {
+
+                e.target.parentElement.parentElement.children[3].classList.remove("button-isRead");
+                e.target.parentElement.parentElement.children[3].classList.add("button-notRead");
+                e.target.parentElement.parentElement.children[3].children[0].classList.remove("button-isRead");
+                e.target.parentElement.parentElement.children[3].children[0].classList.add("button-notRead");
+
+            } 
+            
+        })  
     })
 
 })

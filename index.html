@@ -90,6 +90,37 @@
                 </fieldset>
             </form>
         </div>
+        <div id="update-book" class="hidden">
+            <form method="dialog" action="#">
+                <fieldset>
+                    <div id="book-title-update">
+                        <legend>Please regist your book here!</legend>
+                    </div>
+                    <div id="survey-book-update">
+                        <div id="book-details-title-ipdate">
+                            <label for="book" id="book-label-update">Title</label>
+                            <input type="text" id="book-name-update" minlength="2"  maxlength="30" required>
+                        </div>
+                        <div id="book-details-pages">
+                            <label for="book" id="pages-label-update">Pages</label>
+                            <input type="number" id="book-pages-update" required>
+                        </div>
+                        <div id="book-details-author">
+                            <label for="book" id="author-label-update">Author</label>
+                            <input type="text" id="book-author-update" minlength="2"  maxlength="30" required>
+                        </div>
+                        <div id="book-details-isread">
+                            <label for="book" id="isread-label-update">Already read?</label>
+                            <input type="checkbox" id="book-isread-update" value="isread">
+                        </div>
+                    </div>
+                    <div id="user-details-submit">
+                        <button type="submit" id="book-add-update" disabled="true">Add</button>
+                        <button type="reset" id="book-cancel-update" value="cancel">Cancel</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </div>
 </body>
 </html>

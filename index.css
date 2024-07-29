@@ -19,6 +19,7 @@
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #f2f2f2;
+    overflow-y: hidden;
 }
 
 body header {
@@ -32,7 +33,7 @@ body header {
 
 body#books-auxiliar {
     position: absolute;
-    top: 250px
+    top: 50px
 
 }
  
@@ -236,6 +237,8 @@ body div#add-book form {
     background-color: var(--secondaryColor);
     display: grid;
     grid-template-rows: minmax(200px, 30vh);
+    position: relative;
+    top: -150px;
 }
 
 body div#add-book form fieldset {
