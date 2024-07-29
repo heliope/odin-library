@@ -249,15 +249,7 @@ document.addEventListener("DOMContentLoaded",() => {
         newBookEdit.appendChild(svgEdit);
 
         svgEdit.classList.add("button-edit")
-        
-        // Adiciona o botão Delete
-        const newBookDelete = document.createElement("td");
-        const svgDelete = document.createElement("button");
 
-        newBookTr.appendChild(newBookDelete);
-        newBookDelete.appendChild(svgDelete);
-
-        svgDelete.classList.add("button-delete");
         
         // Mostra Tabela
         divBook.classList.remove("hidden");
@@ -375,8 +367,6 @@ document.addEventListener("DOMContentLoaded",() => {
         })
 
     })
-
-    
         // Update do Livro
         inputUserRegisterBookUpdate.addEventListener("click", () => {
 
@@ -420,6 +410,8 @@ document.addEventListener("DOMContentLoaded",() => {
         addBookFormUpdate.classList.add("hidden");
         addBookFormUpdate.classList.remove("grid");
     })
+
+
 
 })
 
