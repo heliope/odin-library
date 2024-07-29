@@ -34,11 +34,11 @@ document.addEventListener("DOMContentLoaded",() => {
     const addBookFormUpdate = document.getElementById("update-book");        
     const inputUserRegisterBookUpdate = document.getElementById("book-add-update")
     const inputUserIsreadUpdate = document.getElementById("book-isread-update");
-    let inputUserBookTitleUpdate = document.getElementById("book-name-update");
+    const inputUserBookTitleUpdate = document.getElementById("book-name-update");
     const inputUserBookPagesUpdate = document.getElementById("book-pages-update");
     const inputUserBookAuthorUpdate = document.getElementById("book-author-update");
-    let targetRow; 
-
+    const closeEditButton = document.getElementById("book-cancel-update");
+    let targetRow = "";
 
     // Valida os caracteres introduzidos no input de entrada
     inputUser.addEventListener("keyup",(e) => {
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded",() => {
     // Adicionar novo Livro
     inputUserRegisterBook.addEventListener("click", () => {
 
-        addBookToLibrary(inputUserBookTitle.value, inputUserBookAuthor.value, inputUserBookPages.value, inputUserRegisterBook.value);
+        addBookToLibrary(inputUserBookTitle.value, inputUserBookAuthor.value, inputUserBookPages.value, inputUserIsread.checked, inputUserRegisterBook.value);
 
         const divBook = document.getElementById("books-auxiliar");
         const newBookTr = document.createElement("tr");
@@ -238,6 +238,7 @@ document.addEventListener("DOMContentLoaded",() => {
             const svgNotRead = document.createElement("button");
             svgNotRead.classList.add("button-notRead");
             newBookIsreadTd.appendChild(svgNotRead);
+
         }
 
         // Adiciona o botão Edit
@@ -290,6 +291,8 @@ document.addEventListener("DOMContentLoaded",() => {
 
         const rowNumber =  tableBookTr.rows.length +1;
         newBookTr.id= rowNumber;
+
+        console.log(myLibrary);
     })
 
     // Criar novo Livro
@@ -328,7 +331,7 @@ document.addEventListener("DOMContentLoaded",() => {
     // Clica na edição de um livro
     tableBookTr.addEventListener("click", (e) => {
 
-        let targetRow = e.target.parentElement.parentElement.id-2
+        targetRow = e.target.parentElement.parentElement.id-2
       
         //MostraFormulário do adicionar Livro
         addBookFormUpdate.classList.add("grid");
@@ -337,8 +340,9 @@ document.addEventListener("DOMContentLoaded",() => {
         inputUserBookTitleUpdate.value = myLibrary[targetRow].title
         inputUserBookPagesUpdate.value = myLibrary[targetRow].pages
         inputUserBookAuthorUpdate.value = myLibrary[targetRow].author
-        
-        if ( myLibrary[targetRow].isread = 1) {
+
+                
+        if (  myLibrary[targetRow].isread === true ) {
             
             inputUserIsreadUpdate.checked = true;
         } else {
@@ -346,11 +350,18 @@ document.addEventListener("DOMContentLoaded",() => {
             inputUserIsreadUpdate.checked = false;
         }
 
-        // Começar update do Livro
+
+        inputUserBookTitleUpdate.style.color = "green";
+        inputUserBookPagesUpdate.style.color = "green";
+        inputUserBookAuthorUpdate.style.color = "green";
+        inputUserRegisterBookUpdate.removeAttribute("disabled")
 
         inputUserBookTitleUpdate.addEventListener('input', () => checkUserRegisterBookInputTitle(inputUserBookTitleUpdate,inputUserRegisterBookUpdate,inputUserBookPagesUpdate,inputUserBookAuthorUpdate));
         inputUserBookPagesUpdate.addEventListener('input', () => checkUserRegisterBookInputPages(inputUserBookPagesUpdate,inputUserBookTitleUpdate,inputUserBookAuthorUpdate,inputUserRegisterBookUpdate));
         inputUserBookAuthorUpdate.addEventListener('input', () =>checkUserRegisterBookInputAuthor(inputUserBookAuthorUpdate,inputUserBookTitleUpdate,inputUserBookPagesUpdate));
+
+
+        // Começar update do Livro
     
         inputUserBookPages.addEventListener("blur", () => {
     
@@ -359,45 +370,55 @@ document.addEventListener("DOMContentLoaded",() => {
                 alert("Só é possivel inserir digitos numéricos");
                 inputUserBookPagesUpdate.value="";
             }
+
+
         })
 
+    })
+
+    
         // Update do Livro
         inputUserRegisterBookUpdate.addEventListener("click", () => {
-       
-            myLibrary[targetRow].title = inputUserBookTitleUpdate.value
-            myLibrary[targetRow].pages = inputUserBookPagesUpdate.value
-            myLibrary[targetRow].author = inputUserBookAuthorUpdate.value
 
-            if ( inputUserIsreadUpdate.checked) {
+            myLibrary[targetRow].title  = inputUserBookTitleUpdate.value;
+            myLibrary[targetRow].author  = inputUserBookAuthorUpdate.value;
+            myLibrary[targetRow].pages = inputUserBookPagesUpdate.value;
+            console.log(tableBookTr.children[targetRow]);
             
-                myLibrary[targetRow].isread = 1;
-            } else {
-    
-                myLibrary[targetRow].isread = 0;
-            }
+            if ( inputUserIsreadUpdate.checked ) {   
 
-            e.target.parentElement.parentElement.children[0].textContent = myLibrary[targetRow].title 
-            e.target.parentElement.parentElement.children[1].textContent = myLibrary[targetRow].pages 
-            e.target.parentElement.parentElement.children[2].textContent = myLibrary[targetRow].author
-
-            
-            if (  myLibrary[targetRow].isread = 1 ) {   
-
-                e.target.parentElement.parentElement.children[3].classList.add("button-isRead");
-                e.target.parentElement.parentElement.children[3].classList.remove("button-notRead");
-                e.target.parentElement.parentElement.children[3].children[0].classList.add("button-isRead");
-                e.target.parentElement.parentElement.children[3].children[0].classList.remove("button-notRead");
+                tableBookTr.children[targetRow].children[3].children[0].classList.add("button-isRead");
+                tableBookTr.children[targetRow].children[3].children[0].classList.remove("button-notRead");
+                tableBookTr.children[targetRow].children[3].children[0].classList.add("button-isRead");
+                tableBookTr.children[targetRow].children[3].children[0].classList.remove("button-notRead");
+                myLibrary[targetRow].isread = true;
             
             } else {
 
-                e.target.parentElement.parentElement.children[3].classList.remove("button-isRead");
-                e.target.parentElement.parentElement.children[3].classList.add("button-notRead");
-                e.target.parentElement.parentElement.children[3].children[0].classList.remove("button-isRead");
-                e.target.parentElement.parentElement.children[3].children[0].classList.add("button-notRead");
-
+                tableBookTr.children[targetRow].children[3].children[0].classList.remove("button-isRead");
+                tableBookTr.children[targetRow].children[3].children[0].classList.add("button-notRead");
+                tableBookTr.children[targetRow].children[3].children[0].classList.remove("button-isRead");
+                tableBookTr.children[targetRow].children[3].children[0].classList.add("button-notRead");
+                myLibrary[targetRow].isread = false;
             } 
+
+            
+            tableBookTr.children[targetRow].children[0].textContent = myLibrary[targetRow].title 
+            tableBookTr.children[targetRow].children[1].textContent= myLibrary[targetRow].author 
+            tableBookTr.children[targetRow].children[2].textContent = myLibrary[targetRow].pages
+
+            console.log(tableBookTr.children[targetRow]);
+
+            
+            addBookFormUpdate.classList.add("hidden");
+            addBookFormUpdate.classList.remove("grid");
             
         })  
+    // Fecha Edição do Livro
+    closeEditButton.addEventListener("click", () => {
+
+        addBookFormUpdate.classList.add("hidden");
+        addBookFormUpdate.classList.remove("grid");
     })
 
 })

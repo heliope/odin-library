@@ -340,6 +340,119 @@ body div#add-book form fieldset div#user-details-submit button:disabled {
     background-color: var(--inactiveColor);
 }
 
+/* Formulário Editar Livros */
+
+body div#update-book form {
+    border: solid 3px var(--principalColor);
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0px var(--principalColor);
+    background-color: var(--secondaryColor);
+    display: grid;
+    grid-template-rows: minmax(200px, 30vh);
+    position: relative;
+    top: -150px;
+}
+
+
+body div#update-book form fieldset {
+    height: 100%;
+    border: none;
+    font-size: 18px;
+    display: grid;
+    grid-template-rows: 0.25fr 1fr;
+}
+
+body div#update-book form fieldset div#book-title-update {
+    color: var(--principalColor);
+    text-align: center;
+    align-self: center;
+}
+
+body div#update-book form fieldset div#survey-book-update {
+    color: var(--principalColor);
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    padding-left: 20px;
+}
+
+body div#update-book form fieldset div#survey-book-update div#book-details-title-update{
+    display: grid;
+    grid-template-columns: 0.6fr 0.1fr;
+    align-content: center;
+}
+
+body div#update-book form fieldset div#survey-book-update div#book-details-title-update label {
+    text-align: left;
+}
+
+body div#update-book form fieldset div#survey-book-update div#book-details-pages-update{
+    display: grid;
+    grid-template-columns: 0.6fr 0.1fr;
+    align-content: center;
+}
+
+body div#update-book form fieldset div#survey-book-update div#book-details-pages-update label {
+    text-align: left;
+}
+
+body div#update-book form fieldset div#survey-book-update div#book-details-author-update{
+    display: grid;
+    grid-template-columns: 0.6fr 0.1fr;
+    align-content: center;
+}
+
+body div#update-book form fieldset div#survey-book-update div#book-details-author-update label {
+    text-align: left;
+}
+
+body div#update-book form fieldset div#survey-book-update div#book-details-isread-update{
+    display: grid;
+    grid-template-columns: 0.4fr 0.1fr;
+    align-content: center;
+}
+
+body div#update-book form fieldset div#survey-book-update div#book-details-isread-update label {
+    text-align: left;
+}
+
+
+body div#update-book form fieldset div#user-details-submit-update{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+body div#update-book form fieldset div#user-details-submit-update button {
+    border-radius: 10px;
+    background-color: var(--principalColor);
+    border: none;
+    color: var(--textColor);
+    font-weight: bolder;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 80%;
+    padding: 10px 20px;
+}
+
+body div#update-book form fieldset div#user-details-submit-update button#book-add-update {
+    margin-bottom: 10px;
+}
+
+body div#update-book form fieldset div#user-details-submit-update button#book-cancel-update {
+    margin-bottom: 10px;
+}
+
+body div#update-book form fieldset div#user-details-submit-update button:hover {
+    background-color: var(--hoverColor);
+}
+
+body div#update-book form fieldset div#user-details-submit-update button:disabled {
+    background-color: var(--inactiveColor);
+}
+
+
 
 
 
